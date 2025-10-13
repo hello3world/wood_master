@@ -57,39 +57,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Mobile menu toggle (if needed in future)
-    // This is a placeholder for potential mobile menu functionality
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const navList = document.querySelector('.nav-list');
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
 
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', function () {
-            navList.classList.toggle('active');
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', function () {
+            nav.classList.toggle('active');
+
+            // Animate burger to X
+            this.classList.toggle('active');
         });
     }
 
-    // Cookie consent handling
-    const cookieBanner = document.querySelector('.cookie-banner');
-    if (cookieBanner) {
-        // Check if user has already accepted cookies
-        const cookiesAccepted = localStorage.getItem('cookiesAccepted');
-
-        if (cookiesAccepted) {
-            cookieBanner.style.display = 'none';
-        } else {
-            // Show cookie banner
-            cookieBanner.style.display = 'block';
-
-            // Add event listener to accept button (would be added to the banner in a real implementation)
-            const acceptButton = cookieBanner.querySelector('.accept-cookies');
-            if (acceptButton) {
-                acceptButton.addEventListener('click', function () {
-                    localStorage.setItem('cookiesAccepted', 'true');
-                    cookieBanner.style.display = 'none';
-                });
+    // Close menu when clicking outside
+    document.addEventListener('click', function (e) {
+        if (nav && menuToggle) {
+            if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
             }
         }
-    }
+    });
+
+    // Close menu when clicking on a nav link
+    const navLinks = document.querySelectorAll('.nav-list a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            if (nav && menuToggle) {
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    });
 });
 
 // Simple fade-in animation for elements when they come into view
