@@ -222,11 +222,11 @@ a:hover {
 /* Hero Section */
 .hero {
     background: linear-gradient(rgba(107, 75, 62, 0.7), rgba(107, 75, 62, 0.7)),
-        url('images/background.jpg') center/cover no-repeat;
+        url('../images/background.jpg') center/cover no-repeat;
     color: #fff;
     padding: 5rem 0;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 
 .hero-content h1 {
