@@ -154,7 +154,7 @@ a:hover {
 }
 
 .logo h1 {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
     margin: 0;
     color: #6b4b3e;
 }
@@ -378,7 +378,6 @@ a:hover {
 
 .work-area p {
     font-size: 1.2rem;
-    max-width: 800px;
 }
 
 /* Contact Section */
@@ -425,6 +424,30 @@ a:hover {
     border-radius: 8px;
     font-family: 'PT Sans', 'Inter', Arial, sans-serif;
     font-size: 1rem;
+}
+
+.form-group input[type="file"] {
+    padding: 0.5rem;
+    background-color: #f8f8f8;
+    border: 1px dashed #ddd;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+    background-color: #6b4b3e;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'PT Sans', 'Inter', Arial, sans-serif;
+    margin-right: 10px;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #553c31;
 }
 
 .form-group input:focus,
@@ -642,6 +665,10 @@ a:hover {
 
     .hero-content h1 {
         font-size: 2rem;
+    }
+
+    .logo h1 {
+        font-size: 1rem;
     }
 
     .hero-subtitle {
