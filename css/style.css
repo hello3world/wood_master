@@ -154,7 +154,7 @@ a:hover {
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.15rem;
     margin: 0;
     color: #6b4b3e;
 }
@@ -226,7 +226,6 @@ a:hover {
     color: #fff;
     padding: 5rem 0;
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 .hero-content h1 {
@@ -380,7 +379,6 @@ a:hover {
 .work-area p {
     font-size: 1.2rem;
     max-width: 800px;
-    margin: 0 auto;
 }
 
 /* Contact Section */
@@ -406,6 +404,7 @@ a:hover {
     padding: 1.5rem;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    align-self: flex-start;
 }
 
 .form-group {
