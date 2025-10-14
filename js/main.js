@@ -97,6 +97,9 @@ function animateOnScroll() {
     const elements = document.querySelectorAll('.service-card, .gallery-item, .about-text, .about-image');
 
     elements.forEach(element => {
+        // Check if element is already animated
+        if (element.style.opacity === '1') return;
+
         const elementPosition = element.getBoundingClientRect().top;
         const screenPosition = window.innerHeight / 1.3;
 
@@ -106,6 +109,11 @@ function animateOnScroll() {
         }
     });
 }
+
+// Also trigger animation check after images load
+window.addEventListener('load', function () {
+    setTimeout(animateOnScroll, 100);
+});
 
 // Initialize animations
 document.addEventListener('DOMContentLoaded', function () {
@@ -121,7 +129,22 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', animateOnScroll);
 
     // Initial check in case elements are already in view
-    animateOnScroll();
+    // Adding a small delay to ensure proper calculation
+    setTimeout(animateOnScroll, 100);
+
+    // Immediate check for elements that are already in view
+    // This ensures first elements are visible without scrolling
+    const elements = document.querySelectorAll('.service-card, .gallery-item, .about-text, .about-image');
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // If element is in the top 80% of the viewport, show it immediately
+        if (elementPosition < windowHeight * 0.8) {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+        }
+    });
 });
 
 // Carousel functionality
@@ -135,13 +158,24 @@ document.addEventListener('DOMContentLoaded', function () {
         slides[0].classList.add('active');
     }
 
+    // Function to show a specific slide with smooth transition
+    function showSlide(index) {
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+
+        // Update current slide index
+        currentSlide = index;
+
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
+    }
+
     // Next button
     const nextButton = document.querySelector('.carousel-next');
     if (nextButton) {
         nextButton.addEventListener('click', function () {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % totalSlides;
-            slides[currentSlide].classList.add('active');
+            const nextSlide = (currentSlide + 1) % totalSlides;
+            showSlide(nextSlide);
         });
     }
 
@@ -149,18 +183,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const prevButton = document.querySelector('.carousel-prev');
     if (prevButton) {
         prevButton.addEventListener('click', function () {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
+            const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(prevSlide);
         });
     }
 
     // Auto-advance slides every 5 seconds
     setInterval(function () {
         if (slides.length > 0) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % totalSlides;
-            slides[currentSlide].classList.add('active');
+            const nextSlide = (currentSlide + 1) % totalSlides;
+            showSlide(nextSlide);
         }
     }, 5000);
 });

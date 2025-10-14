@@ -42,8 +42,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Simple fade-in animation for gallery items when they come into view
     function animateGalleryOnScroll() {
         galleryItems.forEach(item => {
+            // Check if element is already animated
+            if (item.style.opacity === '1') return;
+
             const itemPosition = item.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
+
+            // On mobile devices, trigger animation earlier
+            const screenPosition = window.innerWidth <= 768 ?
+                window.innerHeight / 1.1 :  // Earlier trigger on mobile
+                window.innerHeight / 1.3;   // Standard trigger on desktop
 
             if (itemPosition < screenPosition) {
                 item.style.opacity = 1;
@@ -64,5 +71,27 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', animateGalleryOnScroll);
 
     // Initial check in case elements are already in view
-    animateGalleryOnScroll();
+    // Adding a small delay to ensure proper calculation
+    setTimeout(animateGalleryOnScroll, 100);
+
+    // Immediate check for elements that are already in view
+    // This ensures first elements are visible without scrolling, especially on mobile
+    galleryItems.forEach(item => {
+        const itemPosition = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // On mobile devices, show more items initially (increase visibility threshold)
+        const visibilityThreshold = window.innerWidth <= 768 ? 0.9 : 0.8;
+
+        // If element is in the top portion of the viewport, show it immediately
+        if (itemPosition < windowHeight * visibilityThreshold) {
+            item.style.opacity = 1;
+            item.style.transform = 'translateY(0)';
+        }
+    });
+
+    // Also trigger animation check after images load
+    window.addEventListener('load', function () {
+        setTimeout(animateGalleryOnScroll, 100);
+    });
 });
