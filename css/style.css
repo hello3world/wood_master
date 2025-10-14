@@ -673,7 +673,7 @@ a:hover {
     }
 
     .hero {
-        padding: 3rem 0;
+        padding: 2.5rem 0;
     }
 
     .hero-content h2 {
@@ -710,6 +710,19 @@ a:hover {
 
     .filter-btn {
         white-space: nowrap;
+    }
+    
+    /* Update padding for all sections on mobile */
+    .about,
+    .services,
+    .gallery-preview,
+    .work-area,
+    .contact {
+        padding: 1.5rem 0;
+    }
+    
+    .hero {
+        padding: 2.5rem 0;
     }
 }
 
