@@ -130,6 +130,61 @@ a:hover {
     text-align: center;
 }
 
+/* Brand Colored Buttons for Inline Consultation */
+.btn-telegram-inline {
+    background-color: #0088cc;
+    /* Telegram Blue */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-telegram-inline:hover {
+    background-color: #0077b3;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-viber-inline {
+    background-color: #7360f2;
+    /* Viber Purple */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-viber-inline:hover {
+    background-color: #624fd9;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Inline Consultation Buttons */
+.inline-consultation-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.inline-consultation-buttons .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+.inline-consultation-buttons svg {
+    transition: transform 0.3s ease;
+}
+
+.inline-consultation-buttons .btn:hover svg {
+    transform: translateX(3px);
+}
+
 /* Header */
 .header {
     background-color: rgba(245, 243, 239, 0.95);
