@@ -711,7 +711,7 @@ a:hover {
     .filter-btn {
         white-space: nowrap;
     }
-    
+
     /* Update padding for all sections on mobile */
     .about,
     .services,
@@ -720,7 +720,7 @@ a:hover {
     .contact {
         padding: 1.5rem 0;
     }
-    
+
     .hero {
         padding: 2.5rem 0;
     }
