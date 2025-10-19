@@ -731,6 +731,44 @@ a:hover {
     color: #6b4b3e;
 }
 
+/* Delivery and Payment Page */
+.delivery-full {
+    padding: 2rem 0;
+}
+
+.delivery-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.delivery-section {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.delivery-section h2 {
+    margin-top: 0;
+    color: #6b4b3e;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.delivery-section h3 {
+    margin-top: 1.5rem;
+    color: #8c735a;
+}
+
+.delivery-section ul {
+    padding-left: 1.5rem;
+}
+
+.delivery-section li {
+    margin-bottom: 0.5rem;
+}
+
 /* Privacy Policy */
 .privacy-policy {
     padding: 2rem 0;
