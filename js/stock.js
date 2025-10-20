@@ -36,12 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
             orderButton.addEventListener('click', function () {
                 const title = item.querySelector('h3').textContent;
                 const price = item.querySelector('.price').textContent;
-                
+
                 // Scroll to contact form
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
                     contactSection.scrollIntoView({ behavior: 'smooth' });
-                    
+
                     // Fill the form with product info
                     const messageField = document.getElementById('message');
                     if (messageField) {
